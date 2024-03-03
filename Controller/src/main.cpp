@@ -1,20 +1,19 @@
 #include <Arduino.h>
+#include "ControllerWiFi.h"
+#include "OTA.h"
 
-#define version 0.01
-
-// put function declarations here:
-int myFunction(int, int);
+#define version 0.02
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(115200);
+    Serial.println("Booting");
+    
+    WiFiSetup();
+
+    OTASetup();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+    ArduinoOTA.handle();
 }
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
-}
